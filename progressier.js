@@ -1,0 +1,1 @@
+<link rel="manifest" href="https://progressier.app/rBrrqRDcIy6t945KAG2b/progressier.json"/><script defer src="https://progressier.app/rBrrqRDcIy6t945KAG2b/script.js"></script> 
