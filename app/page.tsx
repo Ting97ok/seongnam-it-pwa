@@ -30,7 +30,7 @@ export default function Home() {
         const registration = await navigator.serviceWorker.ready
         const subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,
-          applicationServerKey: 'YOUR_VAPID_PUBLIC_KEY' // 실제 키로 교체 필요
+          applicationServerKey: 'BO9hseYcsQZ14cqe0Xb6xr3ZnrRwGO90Qjhv2N-BwLK77X5m5Qqe9EZAsuydDvYjY1oYVpQfAN6463-G0KKxmC8' // 실제 키로 교체 필요
         })
 
         setPushToken(JSON.stringify(subscription))
