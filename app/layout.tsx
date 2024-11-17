@@ -26,6 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en">
     <head>
+      <link rel="manifest" href="https://progressier.app/rBrrqRDcIy6t945KAG2b/progressier.json"/>
+      <script defer src="https://progressier.app/rBrrqRDcIy6t945KAG2b/script.js"></script>
       <meta name="apple-mobile-web-app-capable" content="yes"/>
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
       <meta name="apple-mobile-web-app-title" content="성남 IT 스터디"/>
