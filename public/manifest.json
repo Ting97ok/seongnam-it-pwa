@@ -4,6 +4,8 @@
   "description": "성남 IT 정보 교류 스터디 PWA 애플리케이션",
   "start_url": "/",
   "display": "standalone",
+  "apple-mobile-web-app-capable": "yes",
+  "apple-mobile-web-app-status-bar-style": "black-translucent",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "icons": [

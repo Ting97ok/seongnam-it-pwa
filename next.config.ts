@@ -11,6 +11,7 @@ const withPWA = require('@ducanh2912/next-pwa').default({
   // PWA 설정
   register: true,
   skipWaiting: true,
+  buildExcludes: [/middleware-manifest.json$/],
 })
 
 module.exports = withPWA({
