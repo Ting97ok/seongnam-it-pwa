@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import Head from "next/head";
 
 export default function Home() {
   const [nickname, setNickname] = useState('')
@@ -31,7 +30,7 @@ export default function Home() {
         const registration = await navigator.serviceWorker.ready
         const subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,
-          applicationServerKey: 'BO9hseYcsQZ14cqe0Xb6xr3ZnrRwGO90Qjhv2N-BwLK77X5m5Qqe9EZAsuydDvYjY1oYVpQfAN6463-G0KKxmC8' // 실제 키로 교체 필요
+          applicationServerKey: 'YOUR_VAPID_PUBLIC_KEY' // 실제 키로 교체 필요
         })
 
         setPushToken(JSON.stringify(subscription))
@@ -56,64 +55,53 @@ export default function Home() {
   }
 
   return (
-      <>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-          <meta name="theme-color" content="#000000"/>
-          <link rel="manifest" href="/manifest.json"/>
-          <link rel="apple-touch-icon" href="/icon512_rounded.png"/>
-          <meta name="apple-mobile-web-app-capable" content="yes"/>
-          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-        </Head>
-        
-        <main className="flex min-h-screen flex-col items-center justify-center p-24">
-          <div className="w-full max-w-md space-y-6">
-            <div className="text-center">
-              <h1 className="text-2xl font-bold">성남 IT 정보 교류 스터디</h1>
-              <p className="text-gray-600 mt-2">PWA 테스트 애플리케이션</p>
+      <main className="flex min-h-screen flex-col items-center justify-center p-24">
+        <div className="w-full max-w-md space-y-6">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold">성남 IT 정보 교류 스터디</h1>
+            <p className="text-gray-600 mt-2">PWA 테스트 애플리케이션</p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="nickname">닉네임 / 분야 / 지역</Label>
+              <Input
+                  id="nickname"
+                  placeholder="예: 최대현 / 백엔드 / 은행동"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value)}
+              />
             </div>
 
             <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="nickname">닉네임 / 분야 / 지역</Label>
-                <Input
-                    id="nickname"
-                    placeholder="예: 최대현 / 백엔드 / 은행동"
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
-                />
-              </div>
+              {permission !== 'granted' && (
+                  <Button
+                      className="w-full"
+                      onClick={requestNotificationPermission}
+                  >
+                    알림 권한 요청
+                  </Button>
+              )}
 
-              <div className="space-y-4">
-                {permission !== 'granted' && (
-                    <Button
-                        className="w-full"
-                        onClick={requestNotificationPermission}
-                    >
-                      알림 권한 요청
-                    </Button>
-                )}
-
-                <Button
-                    className="w-full"
-                    onClick={sendTestNotification}
-                    disabled={!nickname || permission !== 'granted'}
-                >
-                  테스트 알림 보내기
-                </Button>
-              </div>
+              <Button
+                  className="w-full"
+                  onClick={sendTestNotification}
+                  disabled={!nickname || permission !== 'granted'}
+              >
+                테스트 알림 보내기
+              </Button>
             </div>
-
-            {pushToken && (
-                <div className="mt-4">
-                  <Label>푸시 토큰</Label>
-                  <div className="mt-2 p-2 bg-gray-100 rounded text-sm break-all">
-                    {pushToken}
-                  </div>
-                </div>
-            )}
           </div>
-        </main>
-      </>
+
+          {pushToken && (
+              <div className="mt-4">
+                <Label>푸시 토큰</Label>
+                <div className="mt-2 p-2 bg-gray-100 rounded text-sm break-all">
+                  {pushToken}
+                </div>
+              </div>
+          )}
+        </div>
+      </main>
   )
 }
