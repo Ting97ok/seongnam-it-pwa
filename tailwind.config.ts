@@ -9,7 +9,36 @@ export default {
   ],
   theme: {
   	extend: {
+      fontFamily: {
+        "heading-title-1-2832-font-family": "Pretendard-Bold, sans-serif",
+        "text-normal-bold-1420-font-family": "Pretendard-Bold, sans-serif",
+        "font-family-pretendard": "Pretendard-Bold, sans-serif",
+      },
+      fontSize: {
+        "heading-title-1-2832-font-size": "28px",
+        "text-normal-bold-1420-font-size": "14px",
+        "font-size-3xl": "28px",
+        "font-size-sm": "14px",
+        "font-size-md": "16px",
+      },
+      fontWeight: {
+        "heading-title-1-2832-font-weight": "700",
+        "text-normal-bold-1420-font-weight": "700",
+      },
+      lineHeight: {
+        "heading-title-1-2832-line-height": "32px",
+        "text-normal-bold-1420-line-height": "20px",
+        "font-line-height-xl": "32px",
+        "font-line-height-sm": "20px",
+        "font-line-height-md": "24px",
+      },
   		colors: {
+        "theme-ink-dark": "#252a31",
+        "theme-product-light": "#eaeffc",
+        "theme-product-normal": "#3060dc",
+        "background-bg-border": "#cbcdd1",
+        "theme-white": "#ffffff",
+        "theme-ink-light": "#697d95",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

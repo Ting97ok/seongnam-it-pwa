@@ -126,7 +126,17 @@ const withPWA = require('next-pwa')({
 })
 
 const nextConfig = {
-  // your existing next config
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    // 다른 환경 변수들...
+  },
+  // Vercel 배포 시 환경 변수 파일 포함
+  experimental: {
+    outputFileTracingIncludes: {
+      '/**/*.env.production': true,
+    },
+  }
+// your existing next config
 }
 
 module.exports = withPWA(nextConfig)
